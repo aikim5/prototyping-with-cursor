@@ -1,50 +1,414 @@
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 2rem;
+/* ============================================
+   Vintage Technical with Glassmorphism
+   Green grid + animated light beams
+   ============================================ */
+
+.scene {
+  --max-width: 900px;
+  --border-radius: 0px;
+  min-height: 100vh;
+  position: relative;
+  color: #e8f5ea;
+  background: linear-gradient(
+    135deg,
+    #0d2818 0%,
+    #1a1a1a 20%,
+    #0a1f1a 40%,
+    #1a1a1a 60%,
+    #102520 80%,
+    #0d2818 100%
+  );
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease-in-out infinite;
 }
 
+/* Sparkle decorations with staggered timing */
+.sparkle1,
+.sparkle2,
+.sparkle3 {
+  position: fixed;
+  width: 80px;
+  height: 80px;
+  background-image: url('/playground/sparkles.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+  animation: sparkleAppear 12s ease-in-out infinite;
+}
+
+.sparkle1 {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.sparkle2 {
+  top: 40%;
+  right: 15%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 4s;
+}
+
+.sparkle3 {
+  bottom: 25%;
+  left: 20%;
+  width: 70px;
+  height: 70px;
+  animation-delay: 8s;
+}
+
+@keyframes sparkleAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  5% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  15% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  25% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+/* Grid overlay - sits on top of animated gradient */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(156, 220, 160, 0.15) 39px,
+      rgba(156, 220, 160, 0.15) 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 39px,
+      rgba(156, 220, 160, 0.15) 39px,
+      rgba(156, 220, 160, 0.15) 40px
+    );
+  pointer-events: none;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 100%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid rgba(156, 220, 160, 0.3);
+  border-right: 1px solid rgba(156, 220, 160, 0.3);
+}
+
+/* Technical header with glassmorphism and animated light beam */
 .header {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(156, 220, 160, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(156, 220, 160, 0.3);
+  border-radius: var(--border-radius);
+  position: relative;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(156, 220, 160, 0.2);
+  overflow: visible;
+}
+
+/* Dot of light tracing the rectangular border */
+.header::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(200, 240, 204, 0.9) 30%,
+    rgba(200, 240, 204, 0.3) 70%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  animation: traceBorder 6s linear infinite;
+  z-index: 3;
+  pointer-events: none;
+  filter: blur(1px);
+  box-shadow: 
+    0 0 8px rgba(255, 255, 255, 0.8),
+    0 0 16px rgba(200, 240, 204, 0.6);
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border-radius: var(--border-radius);
+  z-index: -1;
+}
+
+@keyframes traceBorder {
+  0% {
+    top: -6px;
+    left: -6px;
+  }
+  24.99% {
+    top: -6px;
+    left: calc(100% - 6px);
+  }
+  25% {
+    top: -6px;
+    left: calc(100% - 6px);
+  }
+  49.99% {
+    top: calc(100% - 6px);
+    left: calc(100% - 6px);
+  }
+  50% {
+    top: calc(100% - 6px);
+    left: calc(100% - 6px);
+  }
+  74.99% {
+    top: calc(100% - 6px);
+    left: -6px;
+  }
+  75% {
+    top: calc(100% - 6px);
+    left: -6px;
+  }
+  99.99% {
+    top: -6px;
+    left: -6px;
+  }
+  100% {
+    top: -6px;
+    left: -6px;
+  }
 }
 
 .header h1 {
-  font-size: 2.5rem;
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+  font-size: 3.5rem;
   font-weight: 700;
+  letter-spacing: 0.15em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #c8f0cc;
+  text-shadow: 
+    0 0 20px rgba(156, 220, 160, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+  position: relative;
+  z-index: 2;
+  animation: glitch 8s infinite;
+}
+
+/* Glitch effect layers */
+.header h1::before,
+.header h1::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.header h1::before {
+  animation: glitchTop 3s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  text-shadow: 2px 0 #ff00ff;
+}
+
+.header h1::after {
+  animation: glitchBottom 4s infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  text-shadow: -2px 0 #00ffff;
+}
+
+@keyframes glitch {
+  0%, 90%, 92%, 94%, 100% {
+    transform: translate(0);
+  }
+  91% {
+    transform: translate(-2px, 0);
+  }
+  93% {
+    transform: translate(2px, 0);
+  }
+  95% {
+    transform: translate(-1px, 0);
+  }
+}
+
+@keyframes glitchTop {
+  0%, 90%, 92%, 94%, 100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+  91% {
+    opacity: 0.8;
+    transform: translate(3px, 0);
+  }
+  93% {
+    opacity: 0.7;
+    transform: translate(-3px, 0);
+  }
+}
+
+@keyframes glitchBottom {
+  0%, 90%, 92%, 94%, 100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+  91% {
+    opacity: 0.8;
+    transform: translate(-3px, 0);
+  }
+  93% {
+    opacity: 0.7;
+    transform: translate(3px, 0);
+  }
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 0;
 }
 
+/* Technical cards with glassmorphism and animated light beam on hover */
 .card {
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: var(--border-radius);
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
+  background: rgba(156, 220, 160, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(156, 220, 160, 0.3);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(156, 220, 160, 0.15);
+  transition: all 0.3s ease;
   text-decoration: none;
-  color: inherit;
+  color: #e8f5ea;
   cursor: pointer;
   display: block;
+  position: relative;
+  overflow: visible;
+}
+
+/* Dot of light tracing the rectangular border - activates on hover */
+.card::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(200, 240, 204, 0.9) 30%,
+    rgba(200, 240, 204, 0.3) 70%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  animation: traceBorder 4s linear infinite;
+  animation-play-state: paused;
+  opacity: 0;
+  z-index: 3;
+  pointer-events: none;
+  filter: blur(1px);
+  transition: opacity 0.3s ease;
+  box-shadow: 
+    0 0 6px rgba(255, 255, 255, 0.8),
+    0 0 12px rgba(200, 240, 204, 0.6);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border-radius: var(--border-radius);
+  z-index: -1;
 }
 
 .card:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(156, 220, 160, 0.12);
+  border-color: rgba(200, 240, 204, 0.5);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    0 0 24px rgba(156, 220, 160, 0.2),
+    inset 0 1px 0 rgba(156, 220, 160, 0.25);
   transform: translateY(-2px);
 }
 
+/* Activate beam animation on hover */
+.card:hover::before {
+  animation-play-state: running;
+  opacity: 1;
+}
+
 .card h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+  margin-bottom: 0.4rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c8f0cc;
+  text-shadow: 0 0 12px rgba(156, 220, 160, 0.3);
+  position: relative;
+  z-index: 2;
 }
 
 .card p {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  line-height: 1.6;
-} 
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  opacity: 0.85;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  color: #e8f5ea;
+  position: relative;
+  z-index: 2;
+}

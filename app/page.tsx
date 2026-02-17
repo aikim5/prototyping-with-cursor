@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from './styles/home.module.css';
-import { instrumentSans } from './fonts';
+import { instrumentSerif, ibmPlexSans } from './fonts';
 
 export default function Home() {
   // Add your prototypes to this array
@@ -24,13 +24,20 @@ export default function Home() {
   ];
 
   return (
-    <div className={`${styles.container} ${instrumentSans.className}`}>
-      <header className={styles.header}>
-        <h1>Elizabeth's prototypes</h1>
-      </header>
+    <div className={`${styles.scene} ${ibmPlexSans.className} ${instrumentSerif.variable} ${ibmPlexSans.variable}`}>
+      {/* Vaporwave gradient + grid background */}
+      <div className={styles.bg} aria-hidden />
+      {/* Sparkle decorations with random timing */}
+      <div className={styles.sparkle1} aria-hidden />
+      <div className={styles.sparkle2} aria-hidden />
+      <div className={styles.sparkle3} aria-hidden />
+      <div className={styles.container}>
+        <header className={styles.header}>
+          <h1 data-text="AGNES'S PROTOTYPES">Agnes's prototypes</h1>
+        </header>
 
-      <main>
-        <section className={styles.grid}>
+        <main>
+          <section className={styles.grid}>
           {/* Goes through the prototypes list (array) to create cards */}
           {prototypes.map((prototype, index) => (
             <Link 
@@ -42,8 +49,9 @@ export default function Home() {
               <p>{prototype.description}</p>
             </Link>
           ))}
-        </section>
-      </main>
+          </section>
+        </main>
+      </div>
     </div>
   );
 }
