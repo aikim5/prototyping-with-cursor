@@ -1,0 +1,591 @@
+/* Minimalist Scandinavian Design */
+.desktop {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8f6f3 0%, #ebe8e3 100%);
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuBar {
+  display: none;
+}
+
+/* Container for main content */
+.contentWrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* Right column for visualization and settings */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 340px;
+  flex-shrink: 0;
+}
+
+/* Clean Modern Window */
+.window {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Visualization Window */
+.visualizationWindow {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.visualizationContent {
+  padding: 24px 20px;
+}
+
+/* Sound Settings Window */
+.settingsWindow {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Minimal Title Bar */
+.titleBar {
+  height: 48px;
+  background: #fafaf9;
+  border-bottom: 1px solid #e8e6e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  position: relative;
+}
+
+.stripes {
+  display: none;
+}
+
+.titleText {
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b6b6b;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.closeBox {
+  display: none;
+}
+
+/* Window Content */
+.windowContent {
+  padding: 28px;
+  background: #ffffff;
+}
+
+.infoPanel {
+  background: #fafaf9;
+  border-radius: 2px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  border-left: 3px solid #d4d2ce;
+}
+
+.infoText p {
+  margin: 0;
+  line-height: 1.5;
+  color: #6b6b6b;
+  font-size: 11px;
+}
+
+/* Visualization - Dot style with fixed height */
+.visualization {
+  padding: 32px 24px;
+  background: #fafaf9;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 12px;
+  height: 160px;
+}
+
+.visualBar {
+  width: 8px;
+  background: #2a2a2a;
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.15;
+  min-height: 16px;
+}
+
+.visualBar.active {
+  opacity: 1;
+}
+
+/* Piano Container */
+.pianoContainer {
+  display: flex;
+  justify-content: center;
+  margin: 28px 0;
+  padding: 48px 32px;
+  background: #fafaf9;
+  border-radius: 2px;
+}
+
+.piano {
+  display: flex;
+  position: relative;
+  height: 220px;
+  background: linear-gradient(180deg, #e8e6e3 0%, #d8d6d1 100%);
+  padding: 16px;
+  border-radius: 2px;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Piano Keys - Clean Geometric */
+.key {
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.key:active,
+.key.active {
+  transform: translateY(2px);
+}
+
+.whiteKey {
+  width: 38px;
+  height: 200px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
+  z-index: 1;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-radius: 0 0 2px 2px;
+  margin: 0 1px;
+}
+
+.whiteKey:hover {
+  background: linear-gradient(180deg, #fefefe 0%, #f5f5f5 100%);
+}
+
+.whiteKey:active,
+.whiteKey.active {
+  background: linear-gradient(180deg, #f0f0f0 0%, #e8e8e8 100%);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.15),
+    inset 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.blackKey {
+  width: 26px;
+  height: 130px;
+  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+  color: #fff;
+  z-index: 2;
+  margin-left: -14px;
+  margin-right: -14px;
+  box-shadow: 
+    0 3px 6px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 0 0 2px 2px;
+}
+
+.blackKey:hover {
+  background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
+}
+
+.blackKey:active,
+.blackKey.active {
+  background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.keyLabel {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #9b9b9b;
+  letter-spacing: 0.5px;
+}
+
+.keyboardShortcut {
+  font-size: 7px;
+  opacity: 0.5;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 2px 5px;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.blackKey .keyLabel {
+  color: rgba(255, 255, 255, 0.6);
+  bottom: 8px;
+}
+
+.blackKey .keyboardShortcut {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Control Panel - Minimal */
+.controlPanel {
+  margin-top: 24px;
+  padding: 18px 22px;
+  background: #fafaf9;
+  border-radius: 2px;
+  border-left: 3px solid #d4d2ce;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.controlLabel {
+  font-size: 11px;
+  font-weight: 500;
+  min-width: 60px;
+  color: #6b6b6b;
+  letter-spacing: 0.5px;
+}
+
+.volumeButton {
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border: 1px solid #e8e6e3;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #6b6b6b;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.volumeButton:hover {
+  background: #fafaf9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.volumeButton:active {
+  transform: scale(0.95);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.slider {
+  flex: 1;
+  height: 36px;
+  background: #ffffff;
+  border: 1px solid #e8e6e3;
+  border-radius: 18px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.sliderTrack {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #d4d2ce, #6b6b6b);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+.sliderThumb {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: #2a2a2a;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  cursor: grab;
+  pointer-events: none;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sliderThumb:active {
+  cursor: grabbing;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.volumeDisplay {
+  font-size: 11px;
+  font-weight: 500;
+  min-width: 40px;
+  text-align: right;
+  color: #6b6b6b;
+  letter-spacing: 0.5px;
+}
+
+/* Autoplay Control */
+.autoplayControl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.autoplayButton {
+  width: 100%;
+  padding: 14px 24px;
+  background: #2a2a2a;
+  color: #ffffff;
+  border: none;
+  border-radius: 24px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.autoplayButton:hover {
+  background: #3a3a3a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.autoplayButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Desktop Icon - Minimal at top */
+.desktopIcon {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  width: 64px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: #6b6b6b;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+}
+
+.desktopIcon:hover {
+  transform: translateY(-2px);
+}
+
+.iconImage {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.desktopIcon:hover .iconImage {
+  background: #fafaf9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.iconLabel {
+  font-size: 10px;
+  font-weight: 500;
+  color: #6b6b6b;
+  letter-spacing: 0.3px;
+}
+
+/* Settings Panel - Minimal Radio Buttons */
+.settingsPanel {
+  padding: 14px;
+}
+
+.settingsLabel {
+  font-size: 11px;
+  font-weight: 500;
+  margin: 0 0 10px 0;
+  color: #6b6b6b;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  padding: 9px 12px;
+  background: #fafaf9;
+  border: 1px solid #e8e6e3;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.radioLabel:hover {
+  background: #f5f5f4;
+  border-color: #d4d2ce;
+}
+
+.radioLabel:has(.radioInput:checked) {
+  background: #2a2a2a;
+  color: #ffffff;
+  border-color: #2a2a2a;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.radioInput {
+  margin-right: 10px;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  accent-color: #2a2a2a;
+}
+
+.radioText {
+  font-size: 11px;
+  font-weight: 500;
+  flex: 1;
+  color: inherit;
+  letter-spacing: 0.3px;
+}
+
+.radioDescription {
+  font-size: 9px;
+  font-weight: 400;
+  opacity: 0.6;
+  color: inherit;
+  letter-spacing: 0.2px;
+}
+
+.radioLabel:has(.radioInput:checked) .radioDescription {
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .contentWrapper {
+    flex-direction: column;
+  }
+
+  .rightColumn {
+    max-width: 100%;
+    flex-direction: row;
+  }
+
+  .visualizationWindow {
+    flex: 1;
+  }
+
+  .settingsWindow {
+    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop {
+    padding: 20px 12px;
+  }
+
+  .contentWrapper {
+    gap: 20px;
+  }
+
+  .rightColumn {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .windowContent {
+    padding: 24px;
+  }
+
+  .piano {
+    height: 180px;
+  }
+
+  .whiteKey {
+    width: 35px;
+    height: 160px;
+  }
+
+  .blackKey {
+    width: 24px;
+    height: 100px;
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+
+  .desktopIcon {
+    top: 24px;
+    left: 24px;
+    width: 56px;
+  }
+
+  .iconImage {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}

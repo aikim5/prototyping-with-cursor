@@ -15,6 +15,11 @@ export default function Home() {
       description: 'An interactive button that creates a colorful confetti explosion',
       path: '/prototypes/confetti-button'
     },
+    {
+      title: 'Digital Piano',
+      description: 'A playable 2-octave digital piano with visualization and sound controls',
+      path: '/prototypes/digital-piano'
+    },
     // Add your new prototypes here like this:
     // {
     //   title: 'Your new prototype',
